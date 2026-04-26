@@ -1,6 +1,6 @@
 {
   "name": "airproof",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Audit your JS/TS code for common security bugs before you ship. Zero config. Plain English. 80% OWASP coverage.",
   "type": "module",
   "main": "./src/scan.js",
