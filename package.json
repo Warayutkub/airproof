@@ -1,0 +1,47 @@
+{
+  "name": "airproof",
+  "version": "0.1.0",
+  "description": "Audit your JS/TS code for common security bugs before you ship. Zero config. Plain English. 80% OWASP coverage.",
+  "type": "module",
+  "main": "./src/scan.js",
+  "bin": {
+    "airproof": "./bin/airproof.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node bin/airproof.js",
+    "test": "node bin/airproof.js test-fixtures/sample-app",
+    "self-check": "node bin/airproof.js ."
+  },
+  "keywords": [
+    "audit",
+    "security",
+    "owasp",
+    "linter",
+    "ai-code-review",
+    "code-quality",
+    "static-analysis",
+    "vibe-coding"
+  ],
+  "license": "MIT",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Warayutkub/airproof.git"
+  },
+  "homepage": "https://github.com/Warayutkub/airproof",
+  "bugs": {
+    "url": "https://github.com/Warayutkub/airproof/issues"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.29.2"
+  }
+}
