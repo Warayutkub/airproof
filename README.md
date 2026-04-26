@@ -1,5 +1,10 @@
 # Airproof
 
+[![npm version](https://img.shields.io/npm/v/airproof.svg)](https://www.npmjs.com/package/airproof)
+[![npm downloads](https://img.shields.io/npm/dm/airproof.svg)](https://www.npmjs.com/package/airproof)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/Warayutkub/airproof?style=social)](https://github.com/Warayutkub/airproof)
+
 > Audit your JS/TS code for common security bugs — before you ship.
 > Zero config. Plain English. 80% OWASP coverage.
 
