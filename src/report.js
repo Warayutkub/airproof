@@ -10,11 +10,24 @@ const c = {
   bgRed: '\x1b[41m',
 };
 
+const REPO_URL = 'https://github.com/Warayutkub/airproof';
+const FEEDBACK_URL = `${REPO_URL}/issues/new/choose`;
+
 const ICON = {
   critical: `${c.red}●${c.reset}`,
   warning: `${c.yellow}●${c.reset}`,
   info: `${c.cyan}●${c.reset}`,
 };
+
+function printFeedbackFooter() {
+  console.log(`${c.dim}─────────────────────────────────────────────${c.reset}`);
+  console.log(`${c.dim}💬 เจอ false positive หรืออยากได้ rule ใหม่?${c.reset}`);
+  console.log(`   ${c.cyan}${FEEDBACK_URL}${c.reset}`);
+  console.log();
+  console.log(`${c.dim}⭐ ถ้า airproof ช่วยได้ — ฝาก star ใน GitHub${c.reset}`);
+  console.log(`   ${c.cyan}${REPO_URL}${c.reset}`);
+  console.log();
+}
 
 const LABEL = {
   critical: `${c.red}${c.bold}CRITICAL${c.reset}`,
@@ -30,6 +43,7 @@ export function printReport(issues, target) {
   if (issues.length === 0) {
     console.log(`${c.green}${c.bold}✓ No issues found.${c.reset} ${c.dim}Your code is airproof.${c.reset}`);
     console.log();
+    printFeedbackFooter();
     return;
   }
 
@@ -63,4 +77,5 @@ export function printReport(issues, target) {
     console.log(`${c.yellow}⚠ No critical issues, but ${grouped.warning.length} warning(s) to review.${c.reset}`);
   }
   console.log();
+  printFeedbackFooter();
 }
