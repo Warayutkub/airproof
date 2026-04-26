@@ -198,4 +198,4 @@ MIT — see [LICENSE](./LICENSE).
 
 ---
 
-Built by [@Warayutkub](https://github.com/Warayutkub) — a CS student in Thailand. Use freely. Tell others.
+Built by [@Warayutkub](https://github.com/Warayutkub) — an IT student in Thailand. Use freely. Tell others.
