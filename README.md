@@ -113,9 +113,27 @@ airproof ./my-project
 ### CLI options
 
 ```
-airproof [path]            Audit code at path (default: current dir)
-airproof --help, -h        Show help
-airproof --version, -v     Show version
+airproof [path] [options]
+
+Options:
+  --ignore <patterns>    Comma-separated globs to skip (e.g. "tests/**,docs/**")
+  --no-gitignore         Do not respect .gitignore (scan everything)
+  --help, -h             Show help
+  --version, -v          Show version
+```
+
+### Ignore files
+
+By default, airproof respects:
+- Built-in patterns (`node_modules/`, `dist/`, `.next/`, etc.)
+- `.gitignore` in your project root
+- `.airproofignore` (custom patterns just for airproof)
+
+```
+# .airproofignore example
+tests/
+docs/
+*.generated.ts
 ```
 
 ### Exit codes (CI-friendly)

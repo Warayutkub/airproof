@@ -18,14 +18,23 @@ ${pkg.name} v${pkg.version}
 ${pkg.description}
 
 Usage:
-  airproof [path]            Audit code at path (default: current directory)
-  airproof --help, -h        Show this help
-  airproof --version, -v     Show version
+  airproof [path] [options]
+
+Options:
+  --ignore <patterns>        Comma-separated patterns to skip (e.g. "tests/**,docs/**")
+  --no-gitignore             Do not respect .gitignore (scan everything)
+  --help, -h                 Show this help
+  --version, -v              Show version
 
 Examples:
-  airproof                   # Scan current directory
-  airproof ./src             # Scan ./src folder
-  airproof ../my-project     # Scan a sibling project
+  airproof                          # Scan current directory
+  airproof ./src                    # Scan ./src folder
+  airproof . --ignore "tests/**"    # Skip tests folder
+  airproof . --no-gitignore         # Ignore .gitignore (scan all)
+
+Ignore files:
+  airproof respects .gitignore by default.
+  Add a .airproofignore file to add custom patterns just for airproof.
 
 Exit codes:
   0  No critical issues
@@ -33,6 +42,14 @@ Exit codes:
 
 Docs: https://github.com/Warayutkub/airproof
 `);
+}
+
+function getOptionValue(flag) {
+  const idx = args.findIndex(a => a === flag || a.startsWith(`${flag}=`));
+  if (idx === -1) return null;
+  const arg = args[idx];
+  if (arg.includes('=')) return arg.split('=').slice(1).join('=');
+  return args[idx + 1] ?? null;
 }
 
 if (args.includes('--help') || args.includes('-h')) {
@@ -47,7 +64,14 @@ if (args.includes('--version') || args.includes('-v')) {
 
 const target = args.find(a => !a.startsWith('-')) || '.';
 
-const issues = await audit(target);
+const ignoreArg = getOptionValue('--ignore');
+const extraIgnore = ignoreArg
+  ? ignoreArg.split(',').map(p => p.trim()).filter(Boolean)
+  : [];
+
+const noGitignore = args.includes('--no-gitignore');
+
+const issues = await audit(target, { extraIgnore, noGitignore });
 printReport(issues, target);
 
 const hasCritical = issues.some(i => i.severity === 'critical');
