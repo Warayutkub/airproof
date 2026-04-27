@@ -17,6 +17,10 @@ import noRateLimit from './no-rate-limit.js';
 import ssrf from './ssrf.js';
 import insecureDeserialization from './insecure-deserialization.js';
 import sensitiveLogging from './sensitive-logging.js';
+import openRedirect from './open-redirect.js';
+import prototypePollution from './prototype-pollution.js';
+import insecureCookie from './insecure-cookie.js';
+import todoSecurity from './todo-security.js';
 
 export default [
   syntaxError,
@@ -38,4 +42,8 @@ export default [
   ssrf,
   insecureDeserialization,
   sensitiveLogging,
+  openRedirect,
+  prototypePollution,
+  insecureCookie,
+  todoSecurity,
 ];
